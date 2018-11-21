@@ -1,14 +1,32 @@
-<ActivityStreamModel description="" name="sb1" timezone="Asia/Shanghai" daylight="false" is_init="false">
-  <ModelInfo validated="false">
-    <Samples>
+<ActivityStreamModel description="" name="sb1" timezone="Asia/Shanghai" daylight="false" live="true">
+  <ModelInfo validated="true">
+    <Source>
+      <DataSource type="NotifiableRESTSource" connectionTestable="false">
+      </DataSource>
+      <Filter type="expression">
+        <property name="filter-operation" type="string" value="RegExp"/>
+        <property name="filter-argument" type="string" value=""/>
+      </Filter>
+    <Samples type="upload">
     </Samples>
+    </Source>
+    <GlobalProperties>
+    </GlobalProperties>
     <DeletedNamespaces>
     </DeletedNamespaces>
     <UserSchemas>
     </UserSchemas>
-    <Views>
-    </Views>
-    <Markups>
-    </Markups>
+    <DeploymentSetting>
+      <ServerTag value=""/>
+      <DataSource value="/vitria/m3o/datasource/DefaultDomain/defaultds"/>
+      <QOS value="0"/>
+      <AdvancedProperties>
+        <property componentType="NotifiableRESTSource" batch_size="1000" dataflow_throttling_policy="slowdown" batch_time="100" modelComponentType="NotifiableRESTSource" componentGroup="Source" componentCategory="source" componentName="AS_Source_Source" enable_monitor="true" dataflow_eps_limit="-1" poll_rate="1000"/>
+      </AdvancedProperties>
+      <ExceptionCondition act="skip" logException="true" logEvent="true">
+        <Source retry="5" delay="5" timeunit="second"/>
+        <Target retry="5" delay="5" timeunit="second"/>
+      </ExceptionCondition>
+    </DeploymentSetting>
   </ModelInfo>
 </ActivityStreamModel>
