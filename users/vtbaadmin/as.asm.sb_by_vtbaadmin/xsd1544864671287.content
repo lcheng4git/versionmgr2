@@ -1,0 +1,41 @@
+<schema xmlns:null_0="http://www.w3.org/2001/XMLSchema" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.vitria.com/sample/opbook/shipping_logistic" targetNamespace="http://www.vitria.com/sample/opbook/shipping_logistic">
+
+	<complexType name="Package">
+		<sequence>
+			<element name="Package_id" type="string"/>
+			<element name="Account_no" type="string"/>
+			<element name="Account_type" type="string"/>
+			<element name="Scan_time" type="dateTime"/>
+			<element name="Return_addr" type="tns:Address"/>
+			<element name="Shipto_addr" type="tns:Address"/>
+			<element name="Current_node" type="string"/>
+			<element name="Next_node" type="string"/>
+			<element name="Route_original" type="string"/>
+			<element name="Route_destination" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="Arrival" type="tns:PackageInfo">
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="Departure" type="tns:PackageInfo">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="Address">
+		<sequence>
+			<element name="address1" type="string"/>
+			<element name="address2" type="string"/>
+			<element name="city" type="string"/>
+			<element name="state" type="string"/>
+			<element name="zip" type="string"/>
+
+		</sequence>
+	</complexType>
+
+
+	<complexType name="PackageInfo">
+		<sequence>
+			<element name="Weight" type="float"/>
+		</sequence>
+	</complexType>
+
+	<element name="Package_scan" type="tns:Package"/>
+</schema>
